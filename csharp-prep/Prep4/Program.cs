@@ -52,5 +52,29 @@ class Program
         }
 
         Console.WriteLine($"The max is: {max}");
+
+        // Find the smallest positive number
+        int smallestPosNum = 999999;
+
+         foreach (int number in numbers)
+        {
+            if (number > 0 &&  number < smallestPosNum)
+            {
+                smallestPosNum = number;
+            }
+        }
+
+        Console.WriteLine($"The smallest positive number is: {smallestPosNum}");
+
+        //Sorted list
+        Console.WriteLine("Here is the sorted list: ");
+
+        numbers.Sort();
+        for (int i = 0; i < numbers.Count; i++)
+        {
+            int numbersSorted = numbers[i];
+            Console.WriteLine(numbersSorted);
+        }
+
     }
 }
