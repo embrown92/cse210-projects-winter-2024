@@ -4,13 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        int magicNumber = 13;
+        Console.WriteLine("Guess a number between 1 and 20.");
+        Random randomGenerator = new Random();
+        int magicNumber = randomGenerator.Next(1, 21);
 
         int guessNumber = -1;
 
         while (guessNumber != magicNumber) 
         {
-            Console.Write("Please enter a number between 1 and 20: ");
+            Console.Write("Please enter your guess: ");
             string userInput = Console.ReadLine();
             guessNumber = int.Parse(userInput);
 
