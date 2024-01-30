@@ -3,18 +3,18 @@ namespace Classes
     public class Prompts
     {
         //Class variable and list that hold the random prompt and the prompt list
-        private string _rPrompt = "";
+        private string _randomPrompt = "";
         private List<string> _promptList; 
         
         
-        //Constructor for the Prompt class that receives arguments and assigns values to the class variables.
+        //Constructor for the Prompt class
         public Prompts()
         {
             _promptList = new List<string>();
         }
 
-         //Method to create the prompts list
-        public void CreatePromptList()
+         //Method to create the list of prompts
+        public void PromptList()
         {
             _promptList.Add(new string("Why do you want to start a journal?"));
             _promptList.Add(new string("How are you feeling today on a scale of 1-10? What word would you use to describe how you feel right now?"));
@@ -38,14 +38,14 @@ namespace Classes
             _promptList.Add(new string("What was the last reason you smiled?"));
         }
 
-        // Method for getting a random index number to choose a prompt from the list
-        public string ShowRandomPrompt()
+        // Method for getting a random prompt from the list
+        public string FetchRandomPrompt()
         {
-            CreatePromptList();
-            Random _r = new Random();
-            int index = _r.Next(_promptList.Count);
-            _rPrompt = _promptList[index];
-            return _rPrompt;
+            PromptList();
+            Random _random = new Random();
+            int index = _random.Next(_promptList.Count);
+            _randomPrompt = _promptList[index];
+            return _randomPrompt;
         }
     }
 }

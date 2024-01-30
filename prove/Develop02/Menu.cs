@@ -8,123 +8,122 @@ namespace Classes
         //Choice variable for the Menu class
         private string _choice;
 
-
         //Constructor for the Menu Class
         public Menu()
         {
 
         }
 
+        // //Method for displaying menu and getting the user's choice, as well as verify the choice is proper.
+        // public string MenuChoices()
+        // {
+        //     bool validChoice = false;
 
-        //Method for displaying menu and getting the user's choice, as well as verify the choice is proper.
-        public string GetChoice()
-        {
-            bool properchoice = false;
+        //     do
+        //     {
+        //         Console.WriteLine("\nPlease select one of the following choices:");
+        //         Console.WriteLine("\n1. Write a new entry");
+        //         Console.WriteLine("2. Display previous entries");
+        //         Console.WriteLine("3. Save");
+        //         Console.WriteLine("4. Load an entry");
+        //         Console.WriteLine("5. Clear File");
+        //         Console.WriteLine("6. Quit");
+        //         Console.Write("\nWhat would you like to do? ");
 
-            do
-            {
-                WriteLine("\nPlease select one of the following choices:");
-                WriteLine("\n1. Write");
-                WriteLine("2. Display");
-                WriteLine("3. Save");
-                WriteLine("4. Load");
-                WriteLine("5. Clear File");
-                WriteLine("6. Quit");
-                Write("\nWhat would you like to do? ");
+        //         _choice = Console.ReadLine();
 
-                _choice = ReadLine();
+        //         if (_choice == "1" || _choice == "2" || _choice == "3" || _choice == "4" || _choice == "5" || _choice == "6")
+        //         {
+        //             validChoice = true;
+        //         }
+        //         else
+        //         {
+        //             Console.WriteLine($"\n'{_choice}' not available choice. Please enter a valid choice.");
+        //         }
+        //     } while (!validChoice);
 
-                if (_choice == "1" || _choice == "2" || _choice == "3" || _choice == "4" || _choice == "5" || _choice == "6")
-                {
-                    properchoice = true;
-                }
-                else
-                {
-                    WriteLine($"\n'{_choice}' is not an available choice. Enter another choice.");
-                }
-            } while (!properchoice);
-
-            return _choice;
-        }
-
-
-        //Method takes the user's choice and uses switch to instantiate or call the right method for the choice.
-        public void MenuAction()
-        {
-            string choice;
-            List<Entry> _newEntries = new List<Entry>();
-            Journal entry = new Journal();
-
-            do
-            {
-                choice = GetChoice();
-
-                switch (choice)
-                {
-                    case "1":
-                        //write journal entry
-                        string _date = FindDate();
-                        string _rPrompt = RetrievePrompt();
-                        WriteLine($"\nPrompt: {_rPrompt}");
-                        Write("\nAnswer: ");
-                        string _userEntry = ReadLine().Trim();
-
-                        //Set entry title
-                        Write("Enter a title for this entry: ");
-                        string _userTitle = ReadLine().Trim();
-
-                        //Instantiate entry and send off arguments to entry class
-                        Entry newEntry = new Entry(_userTitle, _date, _rPrompt, _userEntry);
-
-                        //Add newEntry to the _newEntries List.
-                        _newEntries.Add(newEntry);
-                        break;
-
-                    case "2":
-                        //display journal entry
-                        entry._newEntries = _newEntries;
-                        entry.JournalEntryDetails();
-                        break;
-
-                    case "3":
-                        // save to journal file
-                        entry._newEntries = _newEntries;
-                        entry._filename = entry.CreateFile();
-                        entry.SaveToFile();
-                        break;
-
-                    case "4":
-                        //load journal file
-                        entry.ReadFromFile();
-                        break;
-
-                    case "5":
-                        // clear file
-                        entry.ClearFile();
-                        break;
-
-                    default:
-                        break;
-                }
-            } while (choice != "6");
-        }
+        //     return _choice;
+        // }
 
 
-        //Method gets the date and returns it to be used with entries
-        public string FindDate()
-        {
-            DateTime currentTime = DateTime.Now;
-            string dateText = currentTime.ToShortDateString();
-            return dateText;
-        }
+        // //Method takes the user's choice and uses switch 
+        // // to call the right method from the user's choice.
+        // public void MenuAction()
+        // {
+        //     string choice;
+        //     List<Entry> _newEntries = new List<Entry>();
+        //     Journal entry = new Journal();
+
+        //     do
+        //     {
+        //         choice = MenuChoices();
+
+        //         switch (choice)
+        //         {
+        //             case "1":
+        //                 //write journal entry
+        //                 string _date = FindDate();
+        //                 string _rPrompt = RetrievePrompt();
+        //                 Console.WriteLine($"\nPrompt: {_rPrompt}");
+        //                 Console.Write("\nAnswer: ");
+        //                 string _userEntry = ReadLine().Trim();
+
+        //                 //Set entry title
+        //                 Console.Write("Enter a title for this entry: ");
+        //                 string _userTitle = ReadLine().Trim();
+
+        //                 //Instantiate entry and send off arguments to entry class
+        //                 Entry newEntry = new Entry(_userTitle, _date, _rPrompt, _userEntry);
+
+        //                 //Add newEntry to the _newEntries List.
+        //                 _newEntries.Add(newEntry);
+        //                 break;
+
+        //             case "2":
+        //                 //display journal entry
+        //                 entry._newEntries = _newEntries;
+        //                 entry.JournalDetails();
+        //                 break;
+
+        //             case "3":
+        //                 // save to journal file
+        //                 entry._newEntries = _newEntries;
+        //                 entry._filename = entry.CreateFile();
+        //                 entry.SaveToFile();
+        //                 break;
+
+        //             case "4":
+        //                 //load journal file
+        //                 entry.ReadFromFile();
+        //                 break;
+
+        //             case "5":
+        //                 // clear file
+        //                 entry.ClearFile();
+        //                 break;
+
+        //             default:
+        //                 break;
+        //         }
+        //     } while (choice != "6");
+        // }
 
 
-        //Method
-        public string RetrievePrompt()
-        {
-            Prompts newprompt = new Prompts();
-            string _rprompt = newprompt.ShowRandomPrompt();
-            return _rprompt;
-        }
+        // //Method gets the date and returns it to be used with entries
+        // public string FindDate()
+        // {
+        //     DateTime currentTime = DateTime.Now;
+        //     string dateText = currentTime.ToShortDateString();
+        //     return dateText;
+        // }
+
+
+        // //Method
+        // public string RetrievePrompt()
+        // {
+        //     Prompts newprompt = new Prompts();
+        //     string _rprompt = newprompt.FetchRandomPrompt();
+        //     return _rprompt;
+        // }
     }
 }

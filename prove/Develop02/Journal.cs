@@ -20,22 +20,22 @@ namespace Classes
 
 
         //Method for displaying the journal entries from the list.
-        public void JournalEntryDetails()
+        public void JournalDetails()
         {
-            WriteLine("\n************** Journal Entry **************");
+            Console.WriteLine("\n*** Journal Entry ***");
             
             foreach (Entry e in _newEntries)
             {
                 e.ShowEntryDetails();
             }
-            WriteLine("\n******************** End ********************");
+            Console.WriteLine("\n*** End ***");
         }
 
 
         //Method for asking for a file name and creating a new file if one doesn't exist.
         public string CreateFile()
         {
-            Write("What is the name of your journal file? ");
+            Console.Write("What is the name of your journal file? ");
             _filename = ReadLine();
             if (!File.Exists(_filename))
             {
@@ -48,7 +48,7 @@ namespace Classes
         //Method for saving entries to a file.
         public void SaveToFile() 
         {
-            WriteLine("\nSaving to file...");
+            Console.WriteLine("\nSaving to file...");
             
             foreach (Entry e in _newEntries)
             {
@@ -56,7 +56,7 @@ namespace Classes
                 File.AppendAllText(_filename, entryData);
             }
 
-            WriteLine("\nFile Saved...");
+            Console.WriteLine("\nFile Saved...");
         }
 
 
@@ -65,17 +65,17 @@ namespace Classes
         {
             string response;
             
-            WriteLine("Are you sure you want to clear the contents of the journal file? (yes/no)");
+            Console.WriteLine("Are you sure you want to delete this journal file? (yes/no)");
             response = ReadLine().Trim().ToLower();
 
             if (response == "yes")
             {
                 File.WriteAllText(_filename, "");
-                WriteLine("\nJournal is cleared.");
+                Console.WriteLine("\nFile deleted.");
             }
             else 
             {
-                WriteLine("\nJournal was not cleared.");
+                Console.WriteLine("\nFile not deleted.");
             }   
         }
     
@@ -83,20 +83,20 @@ namespace Classes
         //Method for reading a file and converting data into a display format.
         public void ReadFromFile()
         {
-            Write("\nWhat is the name of the file you want to load? ");
+            Console.Write("\nPlease enter the file you want to load. ");
             _filename = ReadLine();
 
             if (!File.Exists(_filename))
             {
-                WriteLine($"\n'{_filename}' does not exist.");
-                Write("\nWhat is the name of the file you want to load? ");
+                Console.WriteLine($"\n'{_filename}' does not exist.");
+                Console.Write("\nPlease enter the file you want to load? ");
                 _filename = ReadLine();
             }
 
-            WriteLine("\nReading Saved File...");
+            WriteLine("\nReading saved file...");
             string[] lines = File.ReadAllLines(_filename);
 
-            WriteLine("\n************** Journal Entry **************");
+            WriteLine("\n*** Journal Entry ***");
             foreach (string line in lines)
             {
                 //breaks line text string data into parts
@@ -120,7 +120,7 @@ namespace Classes
                 WriteLine($"Prompt: {entryPrompt}");
                 WriteLine($"Answer: {entryAnswer}");
             }
-            WriteLine("\n******************** End ********************");
+            WriteLine("\n*** End ***");
         }
     }
 }
