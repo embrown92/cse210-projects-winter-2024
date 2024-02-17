@@ -4,7 +4,8 @@ public class BreathingActivity : Activity
 {
 
     // Constructor
-   public BreathingActivity(string _activityName, string _startingMessage, string _activityDescription, string _endingMessage) : base(_activityName, _startingMessage, _activityDescription, _endingMessage) 
+   public BreathingActivity(string _activityName, string _startingMessage, string _activityDescription, string _endingMessage) : 
+   base(_activityName, _startingMessage, _activityDescription, _endingMessage) 
    {
 
    }
